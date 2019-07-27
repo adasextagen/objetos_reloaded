@@ -58,7 +58,8 @@ const empleadxs = [
       "Ruby",
       "JavaScript",
       "Python",
-      "Java"
+      "Java",
+      'C',
     ]
   },
   {
