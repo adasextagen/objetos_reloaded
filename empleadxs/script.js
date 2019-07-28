@@ -6,21 +6,21 @@ const empleadxsQueHacenGuardia = () => {
 // console.table(empleadxsQueHacenGuardia())
 
 //2.
-const empleadxsPorPais = (pais) => {
+const empleadxsPorPais = pais => {
     return empleadxs.filter(empleadx => empleadx.pais === pais)
 }
 
 // console.table(empleadxsPorPais('Perú'))
 
 //3.
-const empleadxsPorArea = (area) => {
+const empleadxsPorArea = area => {
     return empleadxs.filter(empleadx => empleadx.area === area)
 }
 
 // console.table(empleadxsPorArea('QA'))
 
 //4.
-const empleadxsConSueldoMayorA = (sueldo) => {
+const empleadxsConSueldoMayorA = sueldo => {
     return empleadxs.filter(empleadx => empleadx.sueldo > sueldo)
 }
 
@@ -43,7 +43,7 @@ const sueldoPromedioEmpleadxs = () => {
 // console.log(sueldoPromedioEmpleadxs())
 
 //7.
-const sueldoPromedioPorSeniority = (seniority) => {
+const sueldoPromedioPorSeniority = seniority => {
     let promedio = 0
     let empleadxsFiltrados = empleadxs.filter(empleadx => empleadx.seniority === seniority)
     empleadxsFiltrados.forEach(e => promedio += e.sueldo) // Acá se puede hacer un map para que nos devuelva un array y poder usar reduce
@@ -99,11 +99,12 @@ const seleccionarEmpleadx = nombre => {
 // console.log(seleccionarEmpleadx("Floyd Reyes"))
 
 //11.
-const agregarTecnologias = tecnologias => {
-    empleadxs.forEach(empleadx => empleadx.tecnologias = tecnologias)
+const agregarTecnologias = () => {
+    empleadxs.forEach(empleadx => empleadx.tecnologias = ['GIT','Node JS'])
     return empleadxs
 }
-console.table(agregarTecnologias(['GIT','Node JS']))
+
+// console.log(agregarTecnologias())
 
 //12.
 const empleadxSabeLenguaje = (empleadx, lenguaje) => {
@@ -113,20 +114,59 @@ const empleadxSabeLenguaje = (empleadx, lenguaje) => {
 // console.log(empleadxSabeLenguaje(empleadxs[3], 'Javascript'))
 
 //13.
-const empleadxsQueSabenLenguaje = (lenguaje) => {
+const empleadxsQueSabenLenguaje = lenguaje => {
     return empleadxs.filter(e => empleadxSabeLenguaje(e, lenguaje))
 }
 
 // console.table(empleadxsQueSabenLenguaje('C#'))
 
-//14.
-const empleadxsQueSabenLenguajes = ([lenguajes]) => {
-
+//14. NO FUNCIONA
+const empleadxsQueSabenLenguajes = lenguajes => {
+    return empleadxs.filter(e => e.lenguajes === lenguajes)
 }
 
-console.table(['Java', 'PHP'])
+// console.table(empleadxsQueSabenLenguajes(['PHP', 'JavaScript']))
 
-//15.
-const empleadxsQueSabenAlgunosLenguajes = () => {
+//15. Funciona pero no está tomando un array como parámetro
+const empleadxsQueSabenAlgunosLenguajes = lenguajes => {
+    return empleadxs.filter(e => empleadxSabeLenguaje(e, lenguajes))
+}
+
+// console.table(empleadxsQueSabenAlgunosLenguajes('Java', 'C#'))
+
+//16.
+const empleadxsConMejorSueldo = () => {
+    empleadxs.sort((a, b) => b.sueldo - a.sueldo) // Ordeno lista del sueldo más alto al más bajo
+    let bestSalaries = empleadxs.filter((e, index) => index < 10) // Filtro los 10 primeros
+    console.table(bestSalaries)
+}
+
+// empleadxsConMejorSueldo()
+
+//17.
+const obtenerTitulosCompletos = () => {
+    return empleadxs.map(e => {
+        let name = e.nombre
+        let position = e.puesto
+        let seniority = e.seniority
+        let sector = e.area
+        console.log(`${name}, ${seniority} ${position}, ${sector}`)
+    })
+}
+
+// obtenerTitulosCompletos()
+
+//18.
+const obtenerInfoPersonal = () => {
+    return empleadxs.map(e => {
+        let personalInfo = (({nombre, pais, edad}) => ({nombre, pais, edad}))(e)
+        console.log(personalInfo)
+    })
+}
+
+// obtenerInfoPersonal()
+
+//19.
+const obtenerInfoPuestos = () => {
 
 }
