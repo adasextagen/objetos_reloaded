@@ -156,7 +156,7 @@ const obtenerTitulosCompletos = () => {
 
 // obtenerTitulosCompletos()
 
-//18.
+//18. Array aparece como undefined
 const obtenerInfoPersonal = () => {
     return empleadxs.map(e => {
         let personalInfo = (({nombre, pais, edad}) => ({nombre, pais, edad}))(e)
@@ -168,5 +168,30 @@ const obtenerInfoPersonal = () => {
 
 //19.
 const obtenerInfoPuestos = () => {
-
+    return empleadxs.map(e => {
+        let positionInfo = (({nombre, area, puesto, seniority}) => ({nombre, area, puesto, seniority}))(e)
+        console.log(positionInfo)
+    })
 }
+
+// obtenerInfoPuestos()
+
+//20.
+const obtenerInfoSeniority = () => {
+    return empleadxs.map(e => {
+        let seniorityInfo = (({nombre, seniority, sueldo, lenguajes}) => ({nombre, seniority, sueldo, cantidadLenguajes:lenguajes.length}))(e)
+        console.log(seniorityInfo)
+    })
+}
+
+// obtenerInfoSeniority()
+
+//21.
+const obtenerInfoPagos = () => {
+    return empleadxs.map(e => {
+        let paymentInfo = (({nombre, sueldo, obraSocial, jubilacion, sueldoNeto}) => ({nombre, sueldoBruto:sueldo, obraSocial:(3 * sueldo) / 100, jubilacion:(11 * sueldo) / 100, sueldoNeto: sueldo - ((3 * sueldo) / 100 + (11 * sueldo) / 100)}))(e)
+        console.log(paymentInfo)
+    })
+}
+
+obtenerInfoPagos()
