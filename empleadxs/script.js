@@ -164,7 +164,7 @@ const obtenerInfoPersonal = () => {
     })
 }
 
-// obtenerInfoPersonal()
+obtenerInfoPersonal()
 
 //19.
 const obtenerInfoPuestos = () => {
@@ -194,4 +194,4 @@ const obtenerInfoPagos = () => {
     })
 }
 
-obtenerInfoPagos()
+// obtenerInfoPagos()
