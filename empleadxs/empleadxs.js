@@ -1505,7 +1505,9 @@ const empleadxs = [
 const onloadFunction = () =>{
   //console.log(empleadxsQueHacenGuardia())
   //console.table(empleadxsPorPais('Argentina'))
-  console.table(empleadxsPorArea('QA'))
+  //console.table(empleadxsPorArea('QA'))
+  //console.table(empleadxsConSueldoMayorA(30000))
+  console.table(empleadxsConMasLenguajes(4))
 }
 
 const empleadxsQueHacenGuardia = () =>{
@@ -1525,6 +1527,20 @@ const empleadxsPorPais = (pais) =>{
 const empleadxsPorArea = (area) =>{
   let empleados = empleadxs.filter(empleado =>{
     if(empleado.area === area) return empleado
+  })
+  return empleados
+}
+
+const empleadxsConSueldoMayorA = (sueldo) =>{
+  let empleados = empleadxs.filter(empleado=>{
+    if(empleado.sueldo > sueldo) return empleado
+  })
+  return empleados
+}
+
+const empleadxsConMasLenguajes = (numero) =>{
+  let empleados = empleadxs.filter(empleado=>{
+    if(empleado.lenguajes.length > numero) return empleado
   })
   return empleados
 }
