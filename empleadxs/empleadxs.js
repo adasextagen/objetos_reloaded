@@ -1504,7 +1504,8 @@ const empleadxs = [
 //onload function
 const onloadFunction = () =>{
   //console.log(empleadxsQueHacenGuardia())
-  console.log(empleadxsPorPais('Argentina'))
+  //console.table(empleadxsPorPais('Argentina'))
+  console.table(empleadxsPorArea('QA'))
 }
 
 const empleadxsQueHacenGuardia = () =>{
@@ -1517,6 +1518,13 @@ const empleadxsQueHacenGuardia = () =>{
 const empleadxsPorPais = (pais) =>{
   let empleados = empleadxs.filter(empleado =>{
     if(empleado.pais === pais) return empleado
+  })
+  return empleados
+}
+
+const empleadxsPorArea = (area) =>{
+  let empleados = empleadxs.filter(empleado =>{
+    if(empleado.area === area) return empleado
   })
   return empleados
 }
