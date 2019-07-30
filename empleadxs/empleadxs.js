@@ -1500,3 +1500,15 @@ const empleadxs = [
     ]
   }
 ];
+
+//onload function
+const onloadFunction = () =>{
+  console.log(empleadxsQueHacenGuardia())
+}
+
+const empleadxsQueHacenGuardia = () =>{
+  let empleados = empleadxs.filter(empleado =>{
+    if(empleado.haceGuardia){return empleado}
+  })
+  return empleados
+}
