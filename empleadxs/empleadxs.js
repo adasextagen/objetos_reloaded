@@ -1503,12 +1503,20 @@ const empleadxs = [
 
 //onload function
 const onloadFunction = () =>{
-  console.log(empleadxsQueHacenGuardia())
+  //console.log(empleadxsQueHacenGuardia())
+  console.log(empleadxsPorPais('Argentina'))
 }
 
 const empleadxsQueHacenGuardia = () =>{
   let empleados = empleadxs.filter(empleado =>{
-    if(empleado.haceGuardia){return empleado}
+    if(empleado.haceGuardia)return empleado
+  })
+  return empleados
+}
+
+const empleadxsPorPais = (pais) =>{
+  let empleados = empleadxs.filter(empleado =>{
+    if(empleado.pais === pais) return empleado
   })
   return empleados
 }
