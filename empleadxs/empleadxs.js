@@ -1507,7 +1507,8 @@ const onloadFunction = () =>{
   //console.table(empleadxsPorPais('Argentina'))
   //console.table(empleadxsPorArea('QA'))
   //console.table(empleadxsConSueldoMayorA(30000))
-  console.table(empleadxsConMasLenguajes(4))
+  //console.table(empleadxsConMasLenguajes(4))
+  console.log(sueldoPromedioEmpleadxs())
 }
 
 const empleadxsQueHacenGuardia = () =>{
@@ -1543,4 +1544,12 @@ const empleadxsConMasLenguajes = (numero) =>{
     if(empleado.lenguajes.length > numero) return empleado
   })
   return empleados
+}
+
+const sueldoPromedioEmpleadxs = () =>{
+  let total = 0
+  empleadxs.forEach(empleado=>{
+    total += empleado.sueldo
+  })
+  return total/empleadxs.length
 }
