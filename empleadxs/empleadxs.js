@@ -1508,7 +1508,16 @@ const onloadFunction = () =>{
   //console.table(empleadxsPorArea('QA'))
   //console.table(empleadxsConSueldoMayorA(30000))
   //console.table(empleadxsConMasLenguajes(4))
-  console.log(sueldoPromedioEmpleadxs())
+  //console.log(sueldoPromedioEmpleadxs())
+  //console.log(sueldoPromedioPorSeniority('Senior'))
+  //console.table(buscarEmpleadxs('QA', 'Backend Developer', 'Senior'))
+  //errorEnProduccion()
+  //console.table(empleadxs)
+  //subirDeCategoria("Wade Morgan")
+  //agregarTecnologias()
+  //console.table(empleadxs)
+  //console.log(empleadxSabeLenguaje("Wade Morgan", "Java"))
+  console.log(empleadxsQueSabenLenguaje("Ruby"))
 }
 
 const empleadxsQueHacenGuardia = () =>{
@@ -1552,4 +1561,79 @@ const sueldoPromedioEmpleadxs = () =>{
     total += empleado.sueldo
   })
   return total/empleadxs.length
+}
+
+const sueldoPromedioPorSeniority = (seniority) =>{
+  let total = 0
+  let contador = 0
+  empleadxs.forEach(empleado=>{
+    if(empleado.seniority === seniority){
+      total += empleado.sueldo
+      contador++}
+    })
+  return total/contador
+}
+
+const buscarEmpleadxs = (area, puesto, seniority) =>{
+  let empleados = empleadxs.filter(empleado=>{
+  if(empleado.area === area && empleado.puesto === puesto && empleado.seniority === seniority){
+    return empleado
+  }
+  })
+  return empleados
+}
+
+const errorEnProduccion = () =>{
+  empleadxs.forEach(empleado=>{
+    empleado.haceGuardia = true
+  })
+}
+
+//"Trainee" -> "Junior" -> "Semisenior" -> "Senior"
+const subirDeCategoria = (empleadx) =>{
+  empleadxs.forEach(empleado =>{
+    if(empleado.nombre === empleadx){
+      switch(empleado.seniority){
+        case "Trainee":
+          empleado.seniority = "Junior"
+          break
+        case "Junior":
+          empleado.seniority = "Semisenior"
+          break
+        case "Semisenior":
+          empleado.seniority = "Senior"
+          break
+      }
+      empleado.sueldo += 1000
+    }
+  })
+}
+
+const agregarTecnologias = () =>{
+  empleadxs.forEach(empleado=>{
+    empleado['tecnologias'] = ['GIT', 'Node.js']
+  })
+}
+
+const empleadxSabeLenguaje = (nombre, lenguaje) =>{
+  let sabe = false
+  empleadxs.find(empleado =>{
+    if(empleado.nombre === nombre){
+      empleado.lenguajes.forEach(leng =>{
+        if(leng === lenguaje) sabe = true
+      })
+    }
+  })
+  return sabe
+}
+
+const empleadxsQueSabenLenguaje = (lenguaje) =>{
+  let empleados = empleadxs.filter(empleado=>{
+    let sabe = false
+    empleado.lenguajes.forEach(leng=>{
+      if(leng===lenguaje) sabe = true
+    })
+    if(sabe) return empleado
+  })
+  return empleados
 }
