@@ -120,12 +120,23 @@ const empleadxsQueSabenLenguaje = lenguaje => {
 
 // console.table(empleadxsQueSabenLenguaje('C#'))
 
-//14. NO FUNCIONA
+//14.
 const empleadxsQueSabenLenguajes = lenguajes => {
-    return empleadxs.filter(e => e.lenguajes === lenguajes)
+    let losCapos = []
+    empleadxs.forEach(empleado => {
+        let sabeTodos = true;
+        lenguajes.forEach(lenguaje => {
+            if (!empleadxSabeLenguaje(empleado, lenguaje)) {
+                sabeTodos = false;
+            }
+        });
+        if (sabeTodos)
+            losCapos.push(empleado);
+    });
+    return losCapos
 }
 
-// console.table(empleadxsQueSabenLenguajes(['PHP', 'JavaScript']))
+console.log(empleadxsQueSabenLenguajes(["Ruby", "JavaScript", "Python", "Java", 'C',]))
 
 //15. Funciona pero no está tomando un array como parámetro
 const empleadxsQueSabenAlgunosLenguajes = lenguajes => {
@@ -156,7 +167,7 @@ const obtenerTitulosCompletos = () => {
 
 // obtenerTitulosCompletos()
 
-//18. Array aparece como undefined
+//18.
 const obtenerInfoPersonal = () => {
     return empleadxs.map(e => {
         let personalInfo = (({nombre, pais, edad}) => ({nombre, pais, edad}))(e)
@@ -164,7 +175,7 @@ const obtenerInfoPersonal = () => {
     })
 }
 
-obtenerInfoPersonal()
+// obtenerInfoPersonal()
 
 //19.
 const obtenerInfoPuestos = () => {
