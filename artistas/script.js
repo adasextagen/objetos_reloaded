@@ -67,11 +67,7 @@ const artistaConMayorRecaudacion =  () => {
 console.log (artistaConMayorRecaudacion())
 
 const artistaConDiscoEnAnio = (anio) => {
-    return artistas.map (artista => {
-        artista.discos.forEach(e => {
-            if(e.anioLanzamiento === anio) e
-        } ) 
-    })
+    return artistas.filter(artista => artista.discos).some( d => d === anio)
 
 }
  console.table(artistaConDiscoEnAnio(2011))
